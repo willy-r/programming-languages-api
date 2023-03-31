@@ -17,6 +17,22 @@ public class ProgrammingLanguage {
         this.votes = votes;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
     public String getId() {
         return id;
     }
