@@ -6,5 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProgrammingLanguageRepository extends MongoRepository<ProgrammingLanguage, String> {
-    public Optional<ProgrammingLanguage> findByTitle(String title);
+    Optional<ProgrammingLanguage> findByTitle(String title);
+    List<ProgrammingLanguage> findByOrderByVotes();
 }

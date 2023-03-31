@@ -16,7 +16,7 @@ public class ProgrammingLanguageController {
 
     @GetMapping(path="")
     public List<ProgrammingLanguage> getLanguages() {
-        List<ProgrammingLanguage> languages = repository.findAll();
+        List<ProgrammingLanguage> languages = repository.findByOrderByVotes();
         return languages;
     }
 
