@@ -32,6 +32,11 @@ public class ProgrammingLanguageController {
     @PostMapping(path="")
     @ResponseStatus(HttpStatus.CREATED)
     public ProgrammingLanguage createLanguage(@RequestBody ProgrammingLanguage language) {
+        // Verify if language already exists by name.
+        Optional<ProgrammingLanguage> foundLanguage = repository.findByTitle(language.getTitle());
+        if (foundLanguage.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
         ProgrammingLanguage createdLanguage = repository.save(language);
         return createdLanguage;
     }
@@ -58,6 +63,18 @@ public class ProgrammingLanguageController {
         language.setId(languageId);
 
         ProgrammingLanguage updatedLanguage = repository.save(language);
+        return updatedLanguage;
+    }
+
+    @PutMapping(path="/{languageName}/add-vote")
+    public ProgrammingLanguage addLanguageVote(@PathVariable String languageName) {
+        // Verify if language exists.
+        Optional<ProgrammingLanguage> foundLanguage = repository.findByTitle(languageName);
+        if (foundLanguage.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        foundLanguage.get().setVotes(1);
+        ProgrammingLanguage updatedLanguage = repository.save(foundLanguage.get());
         return updatedLanguage;
     }
 

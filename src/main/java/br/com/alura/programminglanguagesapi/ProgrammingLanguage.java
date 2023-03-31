@@ -30,7 +30,7 @@ public class ProgrammingLanguage {
     }
 
     public void setVotes(int votes) {
-        this.votes = votes;
+        this.votes += votes;
     }
 
     public String getId() {
