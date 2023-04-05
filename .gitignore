@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.properties
+fly.toml
 
 ### STS ###
 .apt_generated
